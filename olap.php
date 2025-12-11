@@ -38,6 +38,15 @@ $page = 'olap';
             min-height: 500px;
         }
 
+        /* Full Width untuk Tabel */
+        #output {
+            width: 100%;
+        }
+
+        .pvtUi {
+            width: 100%;
+        }
+
         /* --- PERBAIKAN TAMPILAN DRAG & DROP --- */
 
         /* 1. Kotak Atribut (Tombol yang bisa ditarik) */
@@ -84,24 +93,34 @@ $page = 'olap';
 
         /* 5. Tabel Hasil (Grid) */
         table.pvtTable {
-            width: 100%;
+            width: 100% !important;
             border-collapse: collapse;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            table-layout: auto;
         }
 
         table.pvtTable thead tr th,
         table.pvtTable tbody tr th {
             background-color: #f1f3f9 !important;
             border: 1px solid #e3e6f0;
-            padding: 8px;
+            padding: 10px 12px;
             font-weight: 700;
             color: #5a5c69;
+            white-space: nowrap;
+            text-align: left;
         }
 
         table.pvtTable tbody tr td {
             border: 1px solid #e3e6f0;
-            padding: 8px;
+            padding: 10px 12px;
             color: #5a5c69;
+            text-align: right;
+        }
+
+        /* Kolom pertama rata kiri */
+        table.pvtTable tbody tr td:first-child,
+        table.pvtTable tbody tr th {
+            text-align: left;
         }
 
         /* Baris Total */

@@ -25,17 +25,116 @@ $page = 'olap';
 
     <style>
         body {
-            background-color: #f3f4f6;
+            background-color: var(--bg-primary);
             font-family: 'Segoe UI', sans-serif;
+            color: var(--text-primary);
         }
 
         .olap-container {
-            background: white;
+            background: var(--bg-card);
             padding: 25px;
             border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow);
             overflow-x: auto;
             min-height: 500px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Dark mode styles */
+        body.dark-mode .bg-white {
+            background-color: var(--bg-card) !important;
+        }
+
+        body.dark-mode .card {
+            background-color: var(--bg-card);
+            border-color: var(--border-color);
+        }
+
+        body.dark-mode .card-header {
+            background-color: var(--bg-secondary) !important;
+            border-color: var(--border-color) !important;
+        }
+
+        body.dark-mode .text-dark {
+            color: var(--text-primary) !important;
+        }
+
+        body.dark-mode .text-muted {
+            color: var(--text-muted) !important;
+        }
+
+        body.dark-mode .text-primary {
+            color: #60a5fa !important;
+        }
+
+        body.dark-mode .text-secondary {
+            color: var(--text-secondary) !important;
+        }
+
+        body.dark-mode .alert-info {
+            background-color: var(--bg-secondary);
+            border-color: var(--border-color);
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .alert-heading {
+            color: var(--text-primary) !important;
+        }
+
+        body.dark-mode .btn-primary {
+            background-color: #3b82f6;
+            border-color: #3b82f6;
+        }
+
+        body.dark-mode .pvtUi {
+            color: var(--text-primary) !important;
+        }
+
+        body.dark-mode p {
+            color: var(--text-secondary);
+        }
+
+        /* OLAP Pivot Table Dark Mode */
+        body.dark-mode .pvtTable {
+            background-color: var(--bg-card) !important;
+            color: var(--text-primary) !important;
+        }
+
+        body.dark-mode .pvtTable thead tr th,
+        body.dark-mode .pvtTable tbody tr th {
+            background-color: var(--bg-secondary) !important;
+            color: var(--text-primary) !important;
+            border-color: var(--border-color) !important;
+        }
+
+        body.dark-mode .pvtTable tbody tr td {
+            background-color: var(--bg-card) !important;
+            color: var(--text-primary) !important;
+            border-color: var(--border-color) !important;
+        }
+
+        body.dark-mode .pvtTotal,
+        body.dark-mode .pvtGrandTotal {
+            background-color: var(--bg-secondary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        body.dark-mode .pvtAxisContainer,
+        body.dark-mode .pvtVals {
+            background-color: var(--bg-card) !important;
+            border-color: var(--border-color) !important;
+            color: var(--text-primary) !important;
+        }
+
+        body.dark-mode select, body.dark-mode input {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border-color: var(--border-color);
+        }
+
+        body.dark-mode .pvtFilterBox {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
         }
 
         /* Full Width untuk Tabel */

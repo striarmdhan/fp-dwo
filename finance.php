@@ -20,6 +20,11 @@ $page = 'finance';
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
         .card-hover:hover {
             transform: translateY(-5px);
             transition: 0.3s;
@@ -33,6 +38,101 @@ $page = 'finance';
 
         #taxChart {
             cursor: pointer;
+        }
+
+        /* Dark mode styles */
+        body.dark-mode .bg-light {
+            background-color: var(--bg-primary) !important;
+        }
+
+        body.dark-mode .bg-white {
+            background-color: var(--bg-card) !important;
+        }
+
+        body.dark-mode .card {
+            background-color: var(--bg-card);
+            border-color: var(--border-color);
+        }
+
+        body.dark-mode .card-header {
+            background-color: var(--bg-secondary) !important;
+            border-color: var(--border-color) !important;
+        }
+
+        body.dark-mode .text-dark, body.dark-mode .text-gray-800 {
+            color: var(--text-primary) !important;
+        }
+
+        body.dark-mode .text-muted, body.dark-mode .text-gray-300 {
+            color: var(--text-muted) !important;
+        }
+
+        body.dark-mode .text-primary {
+            color: #60a5fa !important;
+        }
+
+        body.dark-mode .text-xs {
+            color: var(--text-muted) !important;
+        }
+
+        body.dark-mode .text-secondary {
+            color: var(--text-secondary) !important;
+        }
+
+        body.dark-mode .text-gray-600,
+        body.dark-mode .text-gray-700 {
+            color: var(--text-secondary) !important;
+        }
+
+        body.dark-mode .table {
+            color: var(--text-primary) !important;
+            --bs-table-border-color: var(--border-color);
+            --bs-table-bg: var(--bg-card);
+        }
+
+        body.dark-mode .table td,
+        body.dark-mode .table th {
+            color: var(--text-primary) !important;
+        }
+
+        body.dark-mode .table-dark {
+            background-color: var(--bg-secondary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        body.dark-mode .table-dark th {
+            border-color: var(--border-color) !important;
+        }
+
+        body.dark-mode .table > :not(caption) > * > * {
+            background-color: var(--bg-card);
+        }
+
+        body.dark-mode .table-hover > tbody > tr:hover > * {
+            --bs-table-bg-state: var(--bg-secondary);
+            background-color: var(--bg-secondary) !important;
+        }
+
+        body.dark-mode .border-bottom {
+            border-color: var(--border-color) !important;
+        }
+
+        body.dark-mode .border-left-primary {
+            border-left-color: #3b82f6 !important;
+        }
+
+        body.dark-mode .btn-outline-secondary {
+            color: var(--text-secondary);
+            border-color: var(--border-color);
+        }
+
+        body.dark-mode .btn-outline-secondary:hover {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        body.dark-mode p {
+            color: var(--text-secondary);
         }
 
         /* Global Header Styling */

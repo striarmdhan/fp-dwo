@@ -1,4 +1,45 @@
 <style>
+    /* ===== CSS VARIABLES FOR DARK MODE ===== */
+    :root {
+        --bg-primary: #f3f4f6;
+        --bg-secondary: #ffffff;
+        --bg-card: #ffffff;
+        --text-primary: #1a202c;
+        --text-secondary: #4b5563;
+        --text-muted: #6b7280;
+        --border-color: #e5e7eb;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        --sidebar-bg: #ffffff;
+        --nav-hover: #f8f9fa;
+        --nav-active-bg: #e7f1ff;
+        --nav-active-text: #4e73df;
+    }
+
+    body.dark-mode {
+        --bg-primary: #0f172a;
+        --bg-secondary: #1e293b;
+        --bg-card: #1e293b;
+        --text-primary: #f1f5f9;
+        --text-secondary: #cbd5e1;
+        --text-muted: #94a3b8;
+        --border-color: #334155;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        --sidebar-bg: #1e293b;
+        --nav-hover: #334155;
+        --nav-active-bg: #3b82f6;
+        --nav-active-text: #ffffff;
+    }
+
+    /* Smooth transition untuk semua color changes */
+    body, .sidebar, .nav-link, main, .card, .chart-container {
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    body {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+    }
+
     /* Responsive Sidebar Styles */
     .sidebar {
         position: fixed;
@@ -7,8 +48,46 @@
         left: 0;
         z-index: 100;
         padding: 0;
-        box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+        background-color: var(--sidebar-bg);
+        box-shadow: inset -1px 0 0 var(--border-color);
         overflow-y: auto;
+    }
+
+    /* Dark mode sidebar improvements */
+    body.dark-mode .sidebar {
+        border-right: 1px solid var(--border-color);
+    }
+
+    body.dark-mode .sidebar.bg-white {
+        background-color: var(--sidebar-bg) !important;
+    }
+
+    body.dark-mode .border-bottom {
+        border-color: var(--border-color) !important;
+    }
+
+    body.dark-mode .text-dark {
+        color: var(--text-primary) !important;
+    }
+
+    body.dark-mode .text-muted, body.dark-mode small {
+        color: var(--text-muted) !important;
+    }
+
+    body.dark-mode .text-secondary {
+        color: var(--text-secondary) !important;
+    }
+
+    body.dark-mode .bg-primary {
+        background-color: #3b82f6 !important;
+    }
+
+    body.dark-mode .nav-link.text-secondary {
+        color: var(--text-secondary) !important;
+    }
+
+    body.dark-mode .nav-link.text-secondary:hover {
+        color: var(--text-primary) !important;
     }
 
     @media (max-width: 767.98px) {
@@ -51,15 +130,17 @@
         padding: 0.75rem 1rem;
         border-radius: 8px;
         transition: all 0.2s;
+        color: var(--text-secondary);
     }
 
     .nav-link:hover {
-        background-color: #f8f9fa !important;
+        background-color: var(--nav-hover) !important;
+        color: var(--text-primary);
     }
 
     .nav-link.active {
-        background-color: #e7f1ff !important;
-        color: #4e73df !important;
+        background-color: var(--nav-active-bg) !important;
+        color: var(--nav-active-text) !important;
     }
 
     /* Tombol toggle untuk mobile */
@@ -74,7 +155,7 @@
             top: 10px;
             left: 10px;
             z-index: 1060;
-            background: white;
+            background: var(--bg-secondary);
             border: 2px solid #667eea;
             border-radius: 8px;
             padding: 0.5rem 0.7rem;
@@ -112,6 +193,50 @@
     @media (min-width: 768px) {
         .navbar-toggler {
             display: none;
+        }
+    }
+
+    /* ===== DARK MODE TOGGLE BUTTON (Floating Bottom Right) ===== */
+    .dark-mode-toggle {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 1000;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    .dark-mode-toggle:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+
+    .dark-mode-toggle:active {
+        transform: translateY(-1px) scale(1);
+    }
+
+    body.dark-mode .dark-mode-toggle {
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    }
+
+    @media (max-width: 767.98px) {
+        .dark-mode-toggle {
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            font-size: 1.3rem;
         }
     }
 </style>
@@ -175,9 +300,44 @@
     </div>
 </nav>
 
+<!-- Dark Mode Toggle Button (Floating Bottom Right) -->
+<button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode">
+    <i class="fas fa-moon" id="darkModeIcon"></i>
+</button>
+
 <script>
-    // Toggle sidebar untuk mobile
+    // ===== DARK MODE FUNCTIONALITY =====
     document.addEventListener('DOMContentLoaded', function() {
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const darkModeIcon = document.getElementById('darkModeIcon');
+        
+        // Check localStorage untuk dark mode preference
+        const darkMode = localStorage.getItem('darkMode');
+        
+        // Apply dark mode jika sudah enabled sebelumnya
+        if (darkMode === 'enabled') {
+            document.body.classList.add('dark-mode');
+            darkModeIcon.classList.remove('fa-moon');
+            darkModeIcon.classList.add('fa-sun');
+        }
+        
+        // Toggle dark mode saat button diklik
+        darkModeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            
+            // Update icon
+            if (document.body.classList.contains('dark-mode')) {
+                darkModeIcon.classList.remove('fa-moon');
+                darkModeIcon.classList.add('fa-sun');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                darkModeIcon.classList.remove('fa-sun');
+                darkModeIcon.classList.add('fa-moon');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+        
+        // ===== SIDEBAR TOGGLE FOR MOBILE =====
         const sidebarToggle = document.getElementById('sidebarToggle');
         const sidebar = document.getElementById('sidebarMenu');
         const overlay = document.getElementById('sidebarOverlay');

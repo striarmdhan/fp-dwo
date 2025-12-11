@@ -19,16 +19,18 @@ $page = 'geo'; // Penanda Sidebar
 
     <style>
         body {
-            background-color: #f3f4f6;
+            background-color: var(--bg-primary);
             font-family: 'Segoe UI', sans-serif;
+            color: var(--text-primary);
         }
 
         .chart-container {
-            background: white;
+            background: var(--bg-card);
             border-radius: 12px;
             padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow);
             height: 100%;
+            transition: background-color 0.3s ease;
         }
 
         .filter-btn {
@@ -43,6 +45,84 @@ $page = 'geo'; // Penanda Sidebar
             background-color: #4e73df;
             color: white;
             border-color: #4e73df;
+        }
+
+        /* Dark mode styles */
+        body.dark-mode .bg-white {
+            background-color: var(--bg-card) !important;
+        }
+
+        body.dark-mode .card {
+            background-color: var(--bg-card);
+            border-color: var(--border-color);
+        }
+
+        body.dark-mode .card-header {
+            background-color: var(--bg-secondary) !important;
+            border-color: var(--border-color) !important;
+        }
+
+        body.dark-mode .text-dark {
+            color: var(--text-primary) !important;
+        }
+
+        body.dark-mode .text-muted {
+            color: var(--text-muted) !important;
+        }
+
+        body.dark-mode .text-primary {
+            color: #60a5fa !important;
+        }
+
+        body.dark-mode .text-warning {
+            color: #fbbf24 !important;
+        }
+
+        body.dark-mode .text-secondary {
+            color: var(--text-secondary) !important;
+        }
+
+        body.dark-mode .text-gray-600,
+        body.dark-mode .text-gray-700 {
+            color: var(--text-secondary) !important;
+        }
+
+        body.dark-mode .table {
+            color: var(--text-primary) !important;
+            --bs-table-border-color: var(--border-color);
+            --bs-table-bg: var(--bg-card);
+        }
+
+        body.dark-mode .table td,
+        body.dark-mode .table th {
+            color: var(--text-primary) !important;
+        }
+
+        body.dark-mode .table-light {
+            background-color: var(--bg-secondary) !important;
+        }
+
+        body.dark-mode .table > :not(caption) > * > * {
+            background-color: var(--bg-card);
+        }
+
+        body.dark-mode .table-hover > tbody > tr:hover > * {
+            --bs-table-bg-state: var(--bg-secondary);
+            background-color: var(--bg-secondary) !important;
+        }
+
+        body.dark-mode .badge.bg-light {
+            background-color: var(--bg-secondary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        body.dark-mode .badge.bg-dark {
+            background-color: #1e293b !important;
+            color: var(--text-primary) !important;
+        }
+
+        body.dark-mode p {
+            color: var(--text-secondary);
         }
 
         /* Global Header Styling */

@@ -23,17 +23,18 @@ $page = 'sales';
 
     <style>
         body {
-            background-color: #f3f4f6;
+            background-color: var(--bg-primary);
             font-family: 'Segoe UI', sans-serif;
+            color: var(--text-primary);
         }
 
         /* Styling Card KPI */
         .kpi-card {
             border: none;
             border-radius: 12px;
-            background: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
+            background: var(--bg-card);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
         .kpi-card:hover {
@@ -52,18 +53,116 @@ $page = 'sales';
 
         /* Styling Container Grafik */
         .chart-container {
-            background: white;
+            background: var(--bg-card);
             border-radius: 12px;
             padding: 25px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow);
             height: 100%;
+            transition: background-color 0.3s ease;
         }
 
         .chart-title {
             font-weight: 700;
-            color: #4b5563;
+            color: var(--text-secondary);
             font-size: 1.1rem;
             margin-bottom: 1rem;
+        }
+
+        /* Dark mode specific styles */
+        body.dark-mode .bg-white {
+            background-color: var(--bg-card) !important;
+        }
+
+        body.dark-mode .text-dark {
+            color: var(--text-primary) !important;
+        }
+
+        body.dark-mode .text-muted {
+            color: var(--text-muted) !important;
+        }
+
+        body.dark-mode .text-success {
+            color: #4ade80 !important;
+        }
+
+        body.dark-mode .text-primary {
+            color: #60a5fa !important;
+        }
+
+        body.dark-mode .text-warning {
+            color: #fbbf24 !important;
+        }
+
+        body.dark-mode .text-secondary {
+            color: var(--text-secondary) !important;
+        }
+
+        body.dark-mode .text-gray-900,
+        body.dark-mode .text-gray-800,
+        body.dark-mode .text-gray-700 {
+            color: var(--text-primary) !important;
+        }
+
+        body.dark-mode .card {
+            background-color: var(--bg-card);
+            border-color: var(--border-color);
+        }
+
+        body.dark-mode .card-header {
+            background-color: var(--bg-secondary) !important;
+            border-color: var(--border-color) !important;
+        }
+
+        body.dark-mode .table {
+            color: var(--text-primary) !important;
+            --bs-table-border-color: var(--border-color);
+            --bs-table-bg: var(--bg-card);
+        }
+
+        body.dark-mode .table td,
+        body.dark-mode .table th {
+            color: var(--text-primary) !important;
+        }
+
+        body.dark-mode .table-light {
+            background-color: var(--bg-secondary) !important;
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .table-striped > tbody > tr:nth-of-type(odd) > * {
+            --bs-table-bg-type: var(--bg-secondary);
+            background-color: var(--bg-secondary);
+        }
+
+        body.dark-mode .table > :not(caption) > * > * {
+            background-color: var(--bg-card);
+        }
+
+        body.dark-mode .table-hover > tbody > tr:hover > * {
+            --bs-table-bg-state: var(--bg-secondary);
+            background-color: var(--bg-secondary) !important;
+        }
+
+        body.dark-mode .border-bottom {
+            border-color: var(--border-color) !important;
+        }
+
+        body.dark-mode .btn-outline-secondary {
+            color: var(--text-secondary);
+            border-color: var(--border-color);
+        }
+
+        body.dark-mode .btn-outline-secondary:hover {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .badge {
+            border-color: var(--border-color) !important;
+        }
+
+        body.dark-mode p {
+            color: var(--text-secondary);
         }
 
         /* Global Header Styling */

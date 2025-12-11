@@ -65,6 +65,45 @@ $page = 'sales';
             font-size: 1.1rem;
             margin-bottom: 1rem;
         }
+
+        /* Global Header Styling */
+        h2.fw-bold {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 767.98px) {
+            main {
+                padding-top: 60px !important;
+            }
+
+            /* Header area di mobile */
+            .d-flex.justify-content-between.align-items-center.mb-4 {
+                background: white;
+                margin-left: -1rem;
+                margin-right: -1rem;
+                padding: 1rem !important;
+                margin-bottom: 1rem !important;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                position: sticky;
+                top: 60px;
+                z-index: 10;
+            }
+
+            h2 {
+                font-size: 1.3rem !important;
+                margin-bottom: 0 !important;
+            }
+
+            /* Adjust KPI cards spacing */
+            .row.g-4 {
+                margin-top: 0.5rem;
+            }
+        }
     </style>
 </head>
 

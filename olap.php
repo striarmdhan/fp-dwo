@@ -129,6 +129,49 @@ $page = 'olap';
             font-weight: bold;
             background-color: #eaecf4 !important;
         }
+
+        /* Global Header Styling */
+        h2.fw-bold {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        p.text-muted {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 767.98px) {
+            main {
+                padding-top: 60px !important;
+            }
+
+            .d-flex.justify-content-between {
+                background: white;
+                margin-left: -1rem;
+                margin-right: -1rem;
+                padding: 1rem !important;
+                margin-top: 0 !important;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            }
+
+            h2 {
+                font-size: 1.3rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+
+            p.text-muted {
+                font-size: 0.85rem;
+            }
+
+            .olap-container {
+                padding: 15px;
+            }
+        }
     </style>
 </head>
 

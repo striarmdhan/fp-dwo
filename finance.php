@@ -34,6 +34,36 @@ $page = 'finance';
         #taxChart {
             cursor: pointer;
         }
+
+        /* Global Header Styling */
+        h2.fw-bold, h1.h2 {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 767.98px) {
+            main {
+                padding-top: 60px !important;
+            }
+
+            .d-flex.justify-content-between {
+                background: white;
+                margin-left: -1rem;
+                margin-right: -1rem;
+                padding: 1rem !important;
+                margin-top: 0 !important;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            }
+
+            h1, h2 {
+                font-size: 1.3rem !important;
+                margin-bottom: 0 !important;
+            }
+        }
     </style>
 </head>
 
@@ -46,7 +76,7 @@ $page = 'finance';
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-light min-vh-100">
 
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Tax Overview</h1>
+                    <h2 class="fw-bold text-dark">Tax Overview</h2>
                 </div>
 
                 <div class="row mb-4">
